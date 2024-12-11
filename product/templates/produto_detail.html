@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+{% if user.is_authenticated %}
+
+
+<div class="container">
+    <h1>Detalhes do produtos</h1>
+    <ul>
+        <li><strong>ID: </strong> {{ produto.id }}</li>
+        <li><strong>Nome: </strong> {{ produto.nome }}</li>
+        <li><strong>Descricão: </strong> {{ produto.descricao }}</li>
+        <li><strong>Valor: </strong> {{ produto.preco }}</li>    
+    </ul>
+                    <button onclick="window.history.back()" class="btn btn-danger">Voltar</button>
+                    <button onclick="window.location.href = '/product/{{ produto.id }}/update/'">Alterar</button>
+                    <button onclick="window.location.href = '/product/{{ produto.id }}/delete/'">Deletar</button>
+                    </div>
+    </div>
+    {% else %}
+<h1> Por Favor, efetue o <a href="{% url 'admin:login' %}?next=/">login</a>para acessar.</h1>
+
+
+{% endif %}
+
+{% endblock %}
